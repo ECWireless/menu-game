@@ -6,7 +6,6 @@ import { media } from './components/breakpoints'
 // Components
 import MenuCanvas from './components/MenuCanvas'
 import Sidebar from './components/Sidebar'
-// import SelectionBox from './components/SelectionBox'
 
 // // Interfaces
 // import { ICanvas, ISelectedItemData } from './components/faces'
@@ -21,7 +20,6 @@ function App() {
 			<StyledGameContainer>
 				<MenuCanvas />
 				<Sidebar />
-				{/* <SelectionBox /> */}
 			</StyledGameContainer>
 		</Wrapper>
 	);
