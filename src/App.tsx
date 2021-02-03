@@ -10,11 +10,21 @@ import Sidebar from './components/Sidebar'
 import { MENU_ITEMS, INSTRUCTIONS } from './constants'
 
 // Interfaces
-interface IAnswer {
-    answered: boolean;
+interface ISection {
+	answered: boolean;
     name: string;
     correct: boolean;
-    message: string;
+}
+interface IAnswer {
+	recentMessage: string;
+	recentCorrect: boolean;
+	displayMessage: boolean;
+	section1: ISection;
+	section2: ISection;
+	section3: ISection;
+	section4: ISection;
+	section5: ISection;
+	section6: ISection;
 }
 
 interface IFood {
@@ -29,31 +39,224 @@ function App() {
 
     // State
     const [ answer, setAnswer ] = React.useState<IAnswer>({
-        answered: false,
-        name: '',
-        correct: false,
-        message: ''
+		recentMessage: '',
+		recentCorrect: false,
+		displayMessage: false,
+		section1: {
+			answered: false,
+			name: '',
+			correct: false,
+		},
+		section2: {
+			answered: false,
+			name: '',
+			correct: false,
+		},
+		section3: {
+			answered: false,
+			name: '',
+			correct: false,
+		},
+		section4: {
+			answered: false,
+			name: '',
+			correct: false,
+		},
+		section5: {
+			answered: false,
+			name: '',
+			correct: false,
+		},
+		section6: {
+			answered: false,
+			name: '',
+			correct: false,
+		}
     })
 
     // Handlers
-    const onAnswer = (food: IFood) => {
-        setAnswer(prev => ({
-            ...prev,
-            answered: true,
-            name: food.name,
-            correct: food.correct,
-            message: food.message
-        }))
-	}
-	
-	const onResetAnswer = () => {
+    const onAnswer = (type: string, food: IFood) => {
+		switch (type) {
+			case 'section1':
+				setAnswer(prev => ({
+					...prev,
+					section1: {
+						answered: true,
+						name: food.name,
+						correct: food.correct,
+					}
+				}))
+				break;
+			case 'section2':
+				setAnswer(prev => ({
+					...prev,
+					section2: {
+						answered: true,
+						name: food.name,
+						correct: food.correct,
+					}
+				}))
+				break;
+			case 'section3':
+				setAnswer(prev => ({
+					...prev,
+					section3: {
+						answered: true,
+						name: food.name,
+						correct: food.correct,
+					}
+				}))
+				break;
+			case 'section4':
+				setAnswer(prev => ({
+					...prev,
+					section4: {
+						answered: true,
+						name: food.name,
+						correct: food.correct,
+					}
+				}))
+				break;
+			case 'section5':
+				setAnswer(prev => ({
+					...prev,
+					section5: {
+						answered: true,
+						name: food.name,
+						correct: food.correct,
+					}
+				}))
+				break;
+			case 'section6':
+				setAnswer(prev => ({
+					...prev,
+					section6: {
+						answered: true,
+						name: food.name,
+						correct: food.correct,
+					}
+				}))
+				break;
+			default:
+				break;
+		}
+
 		setAnswer(prev => ({
 			...prev,
-            answered: false,
-			name: '',
-			correct: false,
-			message: ''
-        }))
+			recentMessage: food.message,
+			recentCorrect: food.correct,
+			displayMessage: true,
+		}))
+	}
+	
+	const onResetAnswer = (section: string) => {
+		switch (section) {
+			case 'all':
+				setAnswer(prev => ({
+					...prev,
+					section1: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+					section2: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+					section3: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+					section4: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+					section5: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+					section6: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+			case 'section1':
+				setAnswer(prev => ({
+					...prev,
+					section1: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+			case 'section2':
+				setAnswer(prev => ({
+					...prev,
+					section2: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+			case 'section3':
+				setAnswer(prev => ({
+					...prev,
+					section3: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+			case 'section4':
+				setAnswer(prev => ({
+					...prev,
+					section4: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+			case 'section5':
+				setAnswer(prev => ({
+					...prev,
+					section5: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+			case 'section6':
+				setAnswer(prev => ({
+					...prev,
+					section6: {
+						answered: false,
+						name: '',
+						correct: false,
+					},
+				}))
+				break;
+		
+			default:
+				break;
+		}
+
+		setAnswer(prev => ({
+			...prev,
+			recentMessage: '',
+			recentCorrect: false,
+			displayMessage: false,
+		}))
 	}
 
 	return (

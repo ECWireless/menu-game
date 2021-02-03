@@ -18,8 +18,8 @@ const Sidebar: React.FC<any> = ({
 
     return (
         <StyledSidebar>
-            <ResetPlayButton onClick={onResetAnswer}>Reset and Play Again</ResetPlayButton>
-            {!answer.answered
+            <ResetPlayButton onClick={() => onResetAnswer('all')}>Reset and Play Again</ResetPlayButton>
+            {!answer.displayMessage
             ? (
                 <>
                     <StyledFeedbackContainer>
@@ -35,9 +35,9 @@ const Sidebar: React.FC<any> = ({
             :(
                 <>
                     <StyledFeedbackContainer>
-                        <H1 color={answer.correct ? colors.green : colors.red} bold={'true'}>Feedback</H1>
+                        <H1 color={answer.recentCorrect ? colors.green : colors.red} bold={'true'}>Feedback</H1>
                     </StyledFeedbackContainer>
-                    {answer.message.map((message: string, index: number) => {
+                    {answer.recentMessage.map((message: string, index: number) => {
                         return (
                             <P1 key={index}>{message}</P1>
                         )

@@ -49,12 +49,13 @@ export const StyledMenuCanvasContainer = styled.div`
     display: grid;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 2rem;
     grid-template-rows: 7rem 1fr 1fr 1fr 3rem;
     overflow: hidden;
     position: relative;
 
     ${media.md`
+	    grid-template-columns: 1fr 1fr 3rem;
         grid-template-rows: 9rem 1fr 1fr 1fr 5rem;
     `}
 
@@ -63,6 +64,7 @@ export const StyledMenuCanvasContainer = styled.div`
     `}
 
     ${media.xl`
+	    grid-template-columns: 1fr 1fr 4rem;
         grid-template-rows: 14rem 1fr 1fr 1fr 7rem;
     `}
 `

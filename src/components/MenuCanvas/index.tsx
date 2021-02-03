@@ -26,40 +26,129 @@ const MenuCanvas: React.FC<any> = ({
         <StyledMenuCanvasContainer>
             <StyledPhoto />
             <StyledSection1>
-                {data.section1.map((food: { name: React.ReactNode }, index: string | number | null | undefined) => {
+                {data.section1.map((food: any, index: number) => {
                     return (
-                        <Flex key={index} justify={'space-between'} align={'flex-start'}>
-                            <FoodName
-                                active={answer.name === food.name ? answer.answered : false}
-                                correct={answer.name === food.name ? answer.correct : false}
-                                onClick={() => onAnswer(food)}>
-                                {food.name}
-                            </FoodName>
-                            <IndicatorIcon
-                                answered={answer.name === food.name ? answer.answered : false}
-                                correct={answer.name === food.name ? answer.correct : false}
-                                onResetAnswer={onResetAnswer}
-                            />
-                        </Flex>
+                        <Section
+                            key={index}
+                            answer={answer.section1}
+                            food={food}
+                            index={index}
+                            onAnswer={onAnswer}
+                            onResetAnswer={onResetAnswer}
+                            section={'section1'}
+                        />
                     )
                 })}
             </StyledSection1>
             <StyledSection2>
-                Item
+                {data.section2.map((food: any, index: number) => {
+                    return (
+                        <Section
+                            key={index}
+                            answer={answer.section2}
+                            food={food}
+                            index={index}
+                            onAnswer={onAnswer}
+                            onResetAnswer={onResetAnswer}
+                            section={'section2'}
+                        />
+                    )
+                })}
             </StyledSection2>
             <StyledSection3>
-                Item
+                {data.section3.map((food: any, index: number) => {
+                    return (
+                        <Section
+                            key={index}
+                            answer={answer.section3}
+                            food={food}
+                            index={index}
+                            onAnswer={onAnswer}
+                            onResetAnswer={onResetAnswer}
+                            section={'section3'}
+                        />
+                    )
+                })}
             </StyledSection3>
             <StyledSection4>
-                Item
+                {data.section4.map((food: any, index: number) => {
+                    return (
+                        <Section
+                            key={index}
+                            answer={answer.section4}
+                            food={food}
+                            index={index}
+                            onAnswer={onAnswer}
+                            onResetAnswer={onResetAnswer}
+                            section={'section4'}
+                        />
+                    )
+                })}
             </StyledSection4>
             <StyledSection5>
-                Item
+                {data.section5.map((food: any, index: number) => {
+                    return (
+                        <Section
+                            key={index}
+                            answer={answer.section5}
+                            food={food}
+                            index={index}
+                            onAnswer={onAnswer}
+                            onResetAnswer={onResetAnswer}
+                            section={'section5'}
+                        />
+                    )
+                })}
             </StyledSection5>
             <StyledSection6>
-                Item
+                {data.section6.map((food: any, index: number) => {
+                    return (
+                        <Section
+                            key={index}
+                            answer={answer.section6}
+                            food={food}
+                            index={index}
+                            onAnswer={onAnswer}
+                            onResetAnswer={onResetAnswer}
+                            section={'section6'}
+                        />
+                    )
+                })}
             </StyledSection6>
         </StyledMenuCanvasContainer>
+    )
+}
+
+interface ISection {
+    answer: any;
+    food: any;
+    index: number;
+    onAnswer: any;
+    onResetAnswer: any;
+    section: string;
+}
+
+const Section: React.FC<ISection> = ({
+    answer,
+    food,
+    onAnswer,
+    onResetAnswer,
+    section,
+}) => {
+    return (
+        <Flex justify={'space-between'} align={'flex-start'}>
+            <FoodName
+                active={answer.name === food.name ? answer.answered : false}
+                correct={answer.name === food.name ? answer.correct : false}
+                onClick={() => onAnswer(section, food)}>
+                {food.name}
+            </FoodName>
+            <IndicatorIcon
+                answered={answer.name === food.name ? answer.answered : false}
+                correct={answer.name === food.name ? answer.correct : false}
+                onResetAnswer={() => onResetAnswer(section)}
+            />
+        </Flex>
     )
 }
 
