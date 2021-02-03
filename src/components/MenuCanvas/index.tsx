@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 // Components
 import {
@@ -13,13 +12,47 @@ import {
     StyledSection5,
     StyledSection6,
 } from './components'
-// import IndicatorIcon from '../IndicatorIcon'
+import { Flex } from '../Containers'
+import IndicatorIcon from '../IndicatorIcon'
 
 // Data
 import { MENU_ITEMS } from '../../constants/'
 
+// Interfaces
+interface IAnswer {
+    answered: boolean;
+    name: string;
+    correct: boolean;
+    message: string;
+}
+
+interface IFood {
+    name: string;
+    correct: boolean;
+    message: string;
+}
+
 const MenuCanvas: React.FC<any> = () => {
     let data = MENU_ITEMS
+
+    // State
+    const [ answer, setAnswer ] = React.useState<IAnswer>({
+        answered: false,
+        name: '',
+        correct: false,
+        message: ''
+    })
+
+    // Handlers
+    const onAnswer = (food: IFood) => {
+        setAnswer(prev => ({
+            ...prev,
+            answered: true,
+            name: food.name,
+            correct: food.correct,
+            message: food.message
+        }))
+    }
     
     return (
         <StyledMenuCanvasContainer>
@@ -27,7 +60,18 @@ const MenuCanvas: React.FC<any> = () => {
             <StyledSection1>
                 {data.section1.map((food, index) => {
                     return (
-                        <FoodName key={index}>{food.name}</FoodName>
+                        <Flex key={index} justify={'space-between'} align={'flex-start'}>
+                            <FoodName
+                                active={answer.name === food.name ? answer.answered : false}
+                                correct={answer.name === food.name ? answer.correct : false}
+                                onClick={() => onAnswer(food)}>
+                                {food.name}
+                            </FoodName>
+                            <IndicatorIcon
+                                answered={answer.name === food.name ? answer.answered : false}
+                                correct={answer.name === food.name ? answer.correct : false}
+                            />
+                        </Flex>
                     )
                 })}
             </StyledSection1>

@@ -17,12 +17,12 @@ export const MENU_ITEMS = {
         },
         {
             name: 'Provolone Sticks',
-            correct: true,
+            correct: false,
             message: 'Message.'
         },
         {
             name: 'Fried Zucchini',
-            correct: true,
+            correct: false,
             message: 'Message.'
         },
     ],

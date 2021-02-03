@@ -1,8 +1,13 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { media } from '../../../components/breakpoints'
 import { colors } from '../../../components/theme'
 
-export const FoodName = styled.p`
+interface IFoodName {
+    active: boolean;
+    correct: boolean;
+}
+
+export const FoodName = styled.p<IFoodName>`
     font-size: 10px;
     font-weight: bold;
     margin: 0 0 .5em;
@@ -27,6 +32,14 @@ export const FoodName = styled.p`
     ${media.xl`
         font-size: 14px;
         margin: 0 0 1em;
+    `}
+
+    ${props => (props.active && props.correct) && css`
+        color: ${colors.green};
+    `}
+
+    ${props => (props.active && !props.correct) && css`
+        color: ${colors.red};
     `}
 `
 
