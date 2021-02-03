@@ -33,10 +33,15 @@ const StyledGameContainer = styled.div`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: grid;
-	grid-template-columns: 68rem 30rem;
-	grid-template-rows: 49.5rem;
+	grid-template-columns: 52rem 22rem;
+	grid-template-rows: 38rem;
     overflow: hidden;
 	position: absolute;
+
+	${media.md`
+		grid-template-columns: 66rem 30rem;
+		grid-template-rows: 48rem;
+	`}
 
 	${media.lg`
 		grid-template-columns: 82.5rem 35rem;

@@ -9,12 +9,12 @@ export const ResetPlayButton = styled.button`
     box-shadow: ${shadows.button};
     color: ${colors.white};
     font-family: 'Roboto', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     outline: none;
     text-transform: uppercase;
     transition: all .3s ease;
     height: 5rem;
-    width: 22rem;
+    width: 16rem;
 
     &:hover {
         border: 2px solid ${colors.white};
@@ -25,6 +25,12 @@ export const ResetPlayButton = styled.button`
     &:active {
         box-shadow: none;
     }
+
+    ${media.md`
+        font-size: 1.6rem;
+        height: 5rem;
+        width: 22rem;
+	`}
 
     ${media.lg`
         font-size: 1.8rem;

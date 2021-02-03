@@ -1,7 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 
 // Components
 import {
+    FoodName,
     StyledMenuCanvasContainer,
     StyledPhoto,
     StyledSection1,
@@ -13,14 +15,21 @@ import {
 } from './components'
 // import IndicatorIcon from '../IndicatorIcon'
 
-const MenuCanvas: React.FC<any> = () => {
+// Data
+import { MENU_ITEMS } from '../../constants/'
 
+const MenuCanvas: React.FC<any> = () => {
+    let data = MENU_ITEMS
     
     return (
         <StyledMenuCanvasContainer>
             <StyledPhoto />
             <StyledSection1>
-                Item
+                {data.section1.map((food, index) => {
+                    return (
+                        <FoodName key={index}>{food.name}</FoodName>
+                    )
+                })}
             </StyledSection1>
             <StyledSection2>
                 Item

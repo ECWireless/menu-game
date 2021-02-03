@@ -10,8 +10,12 @@ export const StyledSidebar = styled.div`
     flex-direction: column;
 	grid-column: 2 / 2;
     grid-row: 1 / 2;
-    padding: 4rem;
+    padding: 3rem;
     position: relative;
+
+    ${media.md`
+        padding: 4rem;
+    `}
 
     ${media.lg`
         padding: 4rem 5rem;
@@ -19,5 +23,9 @@ export const StyledSidebar = styled.div`
 `
 
 export const StyledFeedbackContainer = styled.div`
-    margin-top: 5rem;
+    margin-top: 4rem;
+
+    ${media.md`
+        margin-top: 5rem;
+    `}
 `
