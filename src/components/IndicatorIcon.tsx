@@ -5,11 +5,12 @@ import { colors, shadows } from './theme'
 
 const IndicatorIcon: React.FC<any> = ({
     answered,
-    correct
+    correct,
+    onResetAnswer,
 }) => {
     return (
         <>
-        {answered && <StyledIndicatorContainer>
+        {answered && <StyledIndicatorContainer onClick={onResetAnswer}>
             {correct ? <StyledSvg viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M48.9375 7.25L21.75 34.4375L9.0625 21.75L0 30.8125L21.75 52.5625L58 16.3125L48.9375 7.25Z" fill="#34A548"/>
             </StyledSvg>

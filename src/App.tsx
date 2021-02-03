@@ -6,19 +6,61 @@ import { media } from './components/breakpoints'
 import MenuCanvas from './components/MenuCanvas'
 import Sidebar from './components/Sidebar'
 
-// // Interfaces
-// import { ICanvas, ISelectedItemData } from './components/faces'
+// Constants
+import { MENU_ITEMS, INSTRUCTIONS } from './constants'
 
-// // Constants
-// import { BREAKFAST_ITEMS, LINNER_ITEMS } from './constants'
+// Interfaces
+interface IAnswer {
+    answered: boolean;
+    name: string;
+    correct: boolean;
+    message: string;
+}
+
+interface IFood {
+    name: string;
+    correct: boolean;
+    message: string;
+}
 
 function App() {
+
+	let data = MENU_ITEMS
+
+    // State
+    const [ answer, setAnswer ] = React.useState<IAnswer>({
+        answered: false,
+        name: '',
+        correct: false,
+        message: ''
+    })
+
+    // Handlers
+    const onAnswer = (food: IFood) => {
+        setAnswer(prev => ({
+            ...prev,
+            answered: true,
+            name: food.name,
+            correct: food.correct,
+            message: food.message
+        }))
+	}
+	
+	const onResetAnswer = () => {
+		setAnswer(prev => ({
+			...prev,
+            answered: false,
+			name: '',
+			correct: false,
+			message: ''
+        }))
+	}
 
 	return (
 		<Wrapper>
 			<StyledGameContainer>
-				<MenuCanvas />
-				<Sidebar />
+				<MenuCanvas data={data} onAnswer={onAnswer} onResetAnswer={onResetAnswer} answer={answer} />
+				<Sidebar answer={answer} instructions={INSTRUCTIONS} onResetAnswer={onResetAnswer} />
 			</StyledGameContainer>
 		</Wrapper>
 	);

@@ -13,7 +13,7 @@ export const ResetPlayButton = styled.button`
     outline: none;
     text-transform: uppercase;
     transition: all .3s ease;
-    height: 5rem;
+    min-height: 5rem;
     width: 16rem;
 
     &:hover {
@@ -28,19 +28,19 @@ export const ResetPlayButton = styled.button`
 
     ${media.md`
         font-size: 1.6rem;
-        height: 5rem;
+        min-height: 5rem;
         width: 22rem;
 	`}
 
     ${media.lg`
         font-size: 1.8rem;
-        height: 6rem;
+        min-height: 6rem;
         width: 25rem;
 	`}
 
     ${media.xl`
         font-size: 2rem;
-        height: 8rem;
+        min-height: 8rem;
         width: 30rem;
 	`}
 `

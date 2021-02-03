@@ -15,50 +15,18 @@ import {
 import { Flex } from '../Containers'
 import IndicatorIcon from '../IndicatorIcon'
 
-// Data
-import { MENU_ITEMS } from '../../constants/'
-
-// Interfaces
-interface IAnswer {
-    answered: boolean;
-    name: string;
-    correct: boolean;
-    message: string;
-}
-
-interface IFood {
-    name: string;
-    correct: boolean;
-    message: string;
-}
-
-const MenuCanvas: React.FC<any> = () => {
-    let data = MENU_ITEMS
-
-    // State
-    const [ answer, setAnswer ] = React.useState<IAnswer>({
-        answered: false,
-        name: '',
-        correct: false,
-        message: ''
-    })
-
-    // Handlers
-    const onAnswer = (food: IFood) => {
-        setAnswer(prev => ({
-            ...prev,
-            answered: true,
-            name: food.name,
-            correct: food.correct,
-            message: food.message
-        }))
-    }
+const MenuCanvas: React.FC<any> = ({
+    answer,
+    data,
+    onAnswer,
+    onResetAnswer,
+}) => {
     
     return (
         <StyledMenuCanvasContainer>
             <StyledPhoto />
             <StyledSection1>
-                {data.section1.map((food, index) => {
+                {data.section1.map((food: { name: React.ReactNode }, index: string | number | null | undefined) => {
                     return (
                         <Flex key={index} justify={'space-between'} align={'flex-start'}>
                             <FoodName
@@ -70,6 +38,7 @@ const MenuCanvas: React.FC<any> = () => {
                             <IndicatorIcon
                                 answered={answer.name === food.name ? answer.answered : false}
                                 correct={answer.name === food.name ? answer.correct : false}
+                                onResetAnswer={onResetAnswer}
                             />
                         </Flex>
                     )

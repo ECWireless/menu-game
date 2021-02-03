@@ -39,11 +39,14 @@ export const H2 = styled.h2<ITypography>`
 `
 
 export const P1 = styled.p`
-    font-size: 1.4rem;
-    line-height: 22px;
+    font-size: 1.2rem;
+    line-height: 18px;
+    margin: 1rem auto;
+    padding: 0;
 
     ${media.md`
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        line-height: 22px;
     `}
 
     ${props => props.color && css`

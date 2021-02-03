@@ -10,6 +10,7 @@ export const StyledSidebar = styled.div`
     flex-direction: column;
 	grid-column: 2 / 2;
     grid-row: 1 / 2;
+    overflow: scroll;
     padding: 3rem;
     position: relative;
 
@@ -24,8 +25,4 @@ export const StyledSidebar = styled.div`
 
 export const StyledFeedbackContainer = styled.div`
     margin-top: 4rem;
-
-    ${media.md`
-        margin-top: 5rem;
-    `}
 `
