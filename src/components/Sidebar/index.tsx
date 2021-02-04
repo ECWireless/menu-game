@@ -2,6 +2,8 @@ import React from 'react'
 
 // Components
 import {
+    IndicatorIcon,
+    StyledCongratsContainer,
     StyledSidebar,
     StyledFeedbackContainer,
 } from './components'
@@ -15,10 +17,33 @@ const Sidebar: React.FC<any> = ({
     onResetAnswer
 }) => {
 
+    // State
+    const [ congrats, setCongrats ] = React.useState(false)
+
+    // Effect
+    React.useEffect(() => {
+        if (
+            answer.section1.correct
+            && answer.section2.correct
+            && answer.section3.correct
+            && answer.section4.correct
+            && answer.section5.correct
+            && answer.section6.correct
+        ) {
+            setCongrats(true)
+        } else {
+            setCongrats(false)
+        }
+    }, [answer])
 
     return (
         <StyledSidebar>
             <ResetPlayButton onClick={() => onResetAnswer('all')}>Reset and Play Again</ResetPlayButton>
+            {congrats && (
+                <StyledCongratsContainer>
+                    <P1>Congrats! You have selected all of the healthy choices.</P1>
+                </StyledCongratsContainer>
+            )}
             {!answer.displayMessage
             ? (
                 <>
@@ -36,6 +61,7 @@ const Sidebar: React.FC<any> = ({
                 <>
                     <StyledFeedbackContainer>
                         <H1 color={answer.recentCorrect ? colors.green : colors.red} bold={'true'}>Feedback</H1>
+                        <IndicatorIcon answered={answer.displayMessage} correct={answer.recentCorrect} />
                     </StyledFeedbackContainer>
                     {answer.recentMessage.map((message: string, index: number) => {
                         return (

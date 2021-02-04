@@ -1,16 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from './breakpoints'
-import { colors, shadows } from './theme'
+import { media } from '../../breakpoints'
+import { colors, shadows } from '../../theme'
 
-const IndicatorIcon: React.FC<any> = ({
+export const IndicatorIcon: React.FC<any> = ({
     answered,
     correct,
-    onResetAnswer,
 }) => {
     return (
         <>
-        {answered && <StyledIndicatorContainer onClick={onResetAnswer}>
+        {answered && <StyledIndicatorContainer>
             {correct ? <StyledSvg viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M48.9375 7.25L21.75 34.4375L9.0625 21.75L0 30.8125L21.75 52.5625L58 16.3125L48.9375 7.25Z" fill="#34A548"/>
             </StyledSvg>
@@ -29,8 +28,6 @@ const IndicatorIcon: React.FC<any> = ({
     )
 }
 
-export default IndicatorIcon
-
 const StyledIndicatorContainer = styled.div`
     align-items: center;
     background: ${colors.white};
@@ -38,11 +35,10 @@ const StyledIndicatorContainer = styled.div`
     border-radius: 50%;
     box-shadow: ${shadows.button};
     display: flex;
-    height: 1.2rem;
+    height: 3rem;
     justify-content: center;
-    margin-right: 3rem;
     transition: all .3s ease;
-    width: 1.2rem;
+    width: 3rem;
     z-index: 99;
 
     &:hover {
@@ -50,58 +46,27 @@ const StyledIndicatorContainer = styled.div`
     }
 
     ${media.md`
-        margin-right: 4rem;
-        height: 1.5rem;
-        width: 1.5rem;
-    `}
-
-    ${media.lg`
-        height: 1.8rem;
-        width: 1.8rem;
-    `}
-
-    ${media.xl`
-        height: 2rem;
-        width: 2rem;
+        height: 4rem;
+        width: 4rem;
     `}
 `
 
 const StyledSvg = styled.svg`
-    height: 1rem;
-    width: 1rem;
+    height: 2rem;
+    width: 2rem;
 
     ${media.md`
-        height: .9rem;
-        width: .9rem;
-    `}
-
-    ${media.lg`
-        height: 1rem;
-        width: 1rem;
-    `}
-
-    ${media.xl`
-        height: 1.2rem;
-        width: 1.2rem;
+        height: 2.5rem;
+        width: 2.5rem;
     `}
 `
 
 const StyledSvgWrong = styled.svg`
-    height: .6rem;
-    width: .6rem;
+    height: 1.5rem;
+    width: 1.5rem;
 
     ${media.md`
-        height: .7rem;
-        width: .7rem;
-    `}
-
-    ${media.lg`
-        height: .8rem;
-        width: .8rem;
-    `}
-
-    ${media.xl`
-        height: 1rem;
-        width: 1rem;
+        height: 2rem;
+        width: 2rem;
     `}
 `
