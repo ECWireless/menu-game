@@ -49,27 +49,32 @@ export const StyledMenuCanvasContainer = styled.div`
     display: grid;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
-	grid-template-columns: 1fr 1fr 2rem;
+	grid-template-columns: 3rem 1fr 1fr 8rem;
     grid-template-rows: 7rem 1fr 1fr 1fr 3rem;
     overflow: hidden;
     position: relative;
 
     ${media.md`
-	    grid-template-columns: 1fr 1fr 3rem;
+	    grid-template-columns: 4rem 1fr 1fr 10rem;
         grid-template-rows: 9rem 1fr 1fr 1fr 5rem;
     `}
 
     ${media.lg`
+        grid-template-columns: 5rem 1fr 1fr 12rem;
         grid-template-rows: 11.5rem 1fr 1fr 1fr 6rem;
     `}
 
     ${media.xl`
-	    grid-template-columns: 1fr 1fr 4rem;
+        grid-template-columns: 6rem 1fr 1fr 16rem;
         grid-template-rows: 14rem 1fr 1fr 1fr 7rem;
     `}
 `
 
-export const StyledPhoto = styled.div`
+interface IStyledPhoto {
+    menu: string;
+}
+
+export const StyledPhoto = styled.div<IStyledPhoto>`
     background-image: url('/static/Italian_Menu.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -79,10 +84,22 @@ export const StyledPhoto = styled.div`
     height: 100%;
     width: 100%;
     z-index: 0;
+
+    ${props => props.menu === 'italian' && css`
+        background-image: url('/static/Italian_Menu.jpg');
+    `}
+
+    ${props => props.menu === 'american' && css`
+        background-image: url('/static/American_Menu.jpg');
+    `}
+
+    ${props => props.menu === 'indo-chinese' && css`
+        background-image: url('/static/Chinese_Menu.jpg');
+    `}
 `
 
 export const StyledSection1 = styled.div`
-    grid-column: 1 / 2;
+    grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding-left: 5rem;
     z-index: 9;
@@ -101,7 +118,7 @@ export const StyledSection1 = styled.div`
 `
 
 export const StyledSection2 = styled.div`
-    grid-column: 1 / 2;
+    grid-column: 2 / 3;
     grid-row: 3 / 4;
     padding-left: 5rem;
     z-index: 9;
@@ -120,7 +137,7 @@ export const StyledSection2 = styled.div`
 `
 
 export const StyledSection3 = styled.div`
-    grid-column: 1 / 2;
+    grid-column: 2 / 3;
     grid-row: 4 / 5;
     padding-left: 5rem;
     z-index: 9;
@@ -139,7 +156,7 @@ export const StyledSection3 = styled.div`
 `
 
 export const StyledSection4 = styled.div`
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     grid-row: 2 / 3;
     padding-left: 5rem;
     z-index: 9;
@@ -158,7 +175,7 @@ export const StyledSection4 = styled.div`
 `
 
 export const StyledSection5 = styled.div`
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     grid-row: 3 / 4;
     padding-left: 5rem;
     z-index: 9;
@@ -177,7 +194,7 @@ export const StyledSection5 = styled.div`
 `
 
 export const StyledSection6 = styled.div`
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     grid-row: 4 / 5;
     padding-left: 5rem;
     z-index: 9;

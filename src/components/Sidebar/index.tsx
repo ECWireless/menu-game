@@ -13,6 +13,7 @@ import { colors } from '../theme'
 
 const Sidebar: React.FC<any> = ({
     answer,
+    data,
     instructions,
     onResetAnswer
 }) => {
@@ -41,7 +42,7 @@ const Sidebar: React.FC<any> = ({
             <ResetPlayButton onClick={() => onResetAnswer('all')}>Reset and Play Again</ResetPlayButton>
             {congrats && (
                 <StyledCongratsContainer>
-                    <P1>Congrats! You have selected all of the healthy choices.</P1>
+                    <P1>{data.congrats}</P1>
                 </StyledCongratsContainer>
             )}
             {!answer.displayMessage

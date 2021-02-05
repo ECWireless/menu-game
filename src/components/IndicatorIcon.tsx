@@ -40,7 +40,7 @@ const StyledIndicatorContainer = styled.div`
     display: flex;
     height: 1.2rem;
     justify-content: center;
-    margin-right: 3rem;
+    margin-right: 1rem;
     transition: all .3s ease;
     width: 1.2rem;
     z-index: 99;
@@ -50,17 +50,19 @@ const StyledIndicatorContainer = styled.div`
     }
 
     ${media.md`
-        margin-right: 4rem;
+        margin-right: 1rem;
         height: 1.5rem;
         width: 1.5rem;
     `}
 
     ${media.lg`
+        margin-right: 3rem;
         height: 1.8rem;
         width: 1.8rem;
     `}
 
     ${media.xl`
+        margin-right: 1rem;
         height: 2rem;
         width: 2rem;
     `}

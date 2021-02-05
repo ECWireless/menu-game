@@ -7,7 +7,7 @@ import MenuCanvas from './components/MenuCanvas'
 import Sidebar from './components/Sidebar'
 
 // Constants
-import { MENU_ITEMS, INSTRUCTIONS } from './constants'
+import { ITALIEN_MENU, AMERICAN_MENU, INDO_CHINESE_MENU, INSTRUCTIONS } from './constants'
 
 // Interfaces
 interface ISection {
@@ -35,9 +35,9 @@ interface IFood {
 
 function App() {
 
-	let data = MENU_ITEMS
-
     // State
+	const [ data, setData ] = React.useState(ITALIEN_MENU)
+	const [ menu, setMenu ] = React.useState<string | null>('italian')
     const [ answer, setAnswer ] = React.useState<IAnswer>({
 		recentMessage: '',
 		recentCorrect: false,
@@ -73,6 +73,26 @@ function App() {
 			correct: false,
 		}
     })
+
+	// Effect
+	React.useEffect(() => {
+		const params = new URLSearchParams(window.location.search)
+		setMenu(params.get('menu'));
+		if (params.get('menu') === null) {
+			setMenu('italian');
+		} else {
+			setMenu(params.get('menu'));
+		}
+
+		if (params.get('menu') === 'italian') {
+			setData(ITALIEN_MENU)
+		} else if (params.get('menu') === 'american') {
+			setData(AMERICAN_MENU)
+		} else if (params.get('menu') === 'indo-chinese') {
+			setData(INDO_CHINESE_MENU)
+		}
+
+	}, [])
 
     // Handlers
     const onAnswer = (type: string, food: IFood) => {
@@ -262,8 +282,8 @@ function App() {
 	return (
 		<Wrapper>
 			<StyledGameContainer>
-				<MenuCanvas data={data} onAnswer={onAnswer} onResetAnswer={onResetAnswer} answer={answer} />
-				<Sidebar answer={answer} instructions={INSTRUCTIONS} onResetAnswer={onResetAnswer} />
+				<MenuCanvas menu={menu} data={data} onAnswer={onAnswer} onResetAnswer={onResetAnswer} answer={answer} />
+				<Sidebar answer={answer} data={data} instructions={INSTRUCTIONS} onResetAnswer={onResetAnswer} />
 			</StyledGameContainer>
 		</Wrapper>
 	);

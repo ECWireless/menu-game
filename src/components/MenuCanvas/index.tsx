@@ -18,13 +18,14 @@ import IndicatorIcon from '../IndicatorIcon'
 const MenuCanvas: React.FC<any> = ({
     answer,
     data,
+    menu,
     onAnswer,
     onResetAnswer,
 }) => {
     
     return (
         <StyledMenuCanvasContainer>
-            <StyledPhoto />
+            <StyledPhoto menu={menu} />
             <StyledSection1>
                 {data.section1.map((food: any, index: number) => {
                     return (
