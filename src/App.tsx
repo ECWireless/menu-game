@@ -75,24 +75,24 @@ function App() {
     })
 
 	// Effect
-	React.useEffect(() => {
-		const params = new URLSearchParams(window.location.search)
-		setMenu(params.get('menu'));
-		if (params.get('menu') === null) {
-			setMenu('italian');
-		} else {
-			setMenu(params.get('menu'));
-		}
+	// React.useEffect(() => {
+	// 	const params = new URLSearchParams(window.location.search)
+	// 	setMenu(params.get('menu'));
+	// 	if (params.get('menu') === null) {
+	// 		setMenu('italian');
+	// 	} else {
+	// 		setMenu(params.get('menu'));
+	// 	}
 
-		if (params.get('menu') === 'italian') {
-			setData(ITALIEN_MENU)
-		} else if (params.get('menu') === 'american') {
-			setData(AMERICAN_MENU)
-		} else if (params.get('menu') === 'indo-chinese') {
-			setData(INDO_CHINESE_MENU)
-		}
+	// 	if (params.get('menu') === 'italian') {
+	// 		setData(ITALIEN_MENU)
+	// 	} else if (params.get('menu') === 'american') {
+	// 		setData(AMERICAN_MENU)
+	// 	} else if (params.get('menu') === 'indo-chinese') {
+	// 		setData(INDO_CHINESE_MENU)
+	// 	}
 
-	}, [])
+	// }, [])
 
     // Handlers
     const onAnswer = (type: string, food: IFood) => {
@@ -283,7 +283,11 @@ function App() {
 		<Wrapper>
 			<StyledGameContainer>
 				<MenuCanvas menu={menu} data={data} onAnswer={onAnswer} onResetAnswer={onResetAnswer} answer={answer} />
-				<Sidebar answer={answer} data={data} instructions={INSTRUCTIONS} onResetAnswer={onResetAnswer} />
+				<Sidebar
+					menu={menu} setMenu={setMenu}
+					answer={answer} data={data}
+					instructions={INSTRUCTIONS} onResetAnswer={onResetAnswer}
+				/>
 			</StyledGameContainer>
 		</Wrapper>
 	);

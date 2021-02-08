@@ -7,15 +7,19 @@ import {
     StyledSidebar,
     StyledFeedbackContainer,
 } from './components'
+import { SelectionButton } from '../Buttons/SelectionButton'
 import { ResetPlayButton } from '../Buttons/ResetPlayButton'
-import { H1, P1 } from '../Typography'
+import Spacer from '../Spacer'
+import { H1, H2, P1 } from '../Typography'
 import { colors } from '../theme'
 
 const Sidebar: React.FC<any> = ({
     answer,
     data,
     instructions,
-    onResetAnswer
+    menu,
+    onResetAnswer,
+    setMenu,
 }) => {
 
     // State
@@ -40,6 +44,10 @@ const Sidebar: React.FC<any> = ({
     return (
         <StyledSidebar>
             <ResetPlayButton onClick={() => onResetAnswer('all')}>Reset and Play Again</ResetPlayButton>
+            <Spacer size={'sm'} />
+            <H2 bold={'true'} color={colors.black}>Pick a menu:</H2>
+            <br />            
+            <SelectionButton setMenu={setMenu} menu={menu} />
             {congrats && (
                 <StyledCongratsContainer>
                     <P1>{data.congrats}</P1>
