@@ -75,24 +75,16 @@ function App() {
     })
 
 	// Effect
-	// React.useEffect(() => {
-	// 	const params = new URLSearchParams(window.location.search)
-	// 	setMenu(params.get('menu'));
-	// 	if (params.get('menu') === null) {
-	// 		setMenu('italian');
-	// 	} else {
-	// 		setMenu(params.get('menu'));
-	// 	}
+	React.useEffect(() => {
+		if (menu === 'italian') {
+			setData(ITALIEN_MENU)
+		} else if (menu === 'american') {
+			setData(AMERICAN_MENU)
+		} else if (menu === 'indo-chinese') {
+			setData(INDO_CHINESE_MENU)
+		}
 
-	// 	if (params.get('menu') === 'italian') {
-	// 		setData(ITALIEN_MENU)
-	// 	} else if (params.get('menu') === 'american') {
-	// 		setData(AMERICAN_MENU)
-	// 	} else if (params.get('menu') === 'indo-chinese') {
-	// 		setData(INDO_CHINESE_MENU)
-	// 	}
-
-	// }, [])
+	}, [menu])
 
     // Handlers
     const onAnswer = (type: string, food: IFood) => {
